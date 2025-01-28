@@ -20,9 +20,9 @@ class ServicoController extends Controller
         return view('servicos.create');
     }
 
-    public function store(Request $request)
+    public function store(ServicoRequest $request)
     {
-        $validated = $request->validate([
+        /*validated = $request->validate([
             'nome' => 'required|string|max:255',
             'icone' => 'nullable|string|max:255',
             'posicao' => 'nullable|integer',
@@ -41,8 +41,8 @@ class ServicoController extends Controller
             'horas_quintal' => 'nullable|integer',
             'valor_outros' => 'nullable|numeric',
             'horas_outros' => 'nullable|integer',
-        ]);
-
+        ])*/
+        $validated = $request->except('_token');
         Servico::create($validated);
         return redirect()->route('servicos.index')->with('success', 'Serviço cadastrado com sucesso!');
     }
