@@ -44,7 +44,7 @@ class ServicoController extends Controller
         ])*/
         $validated = $request->except('_token');
         Servico::create($validated);
-        return redirect()->route('servicos.index')->with('success', 'Serviço cadastrado com sucesso!');
+        return redirect()->route('servicos.index')->with('mensagem', 'Serviço cadastrado com sucesso!');
     }
 
     public function edit(Servico $servico)
